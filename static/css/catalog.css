@@ -1,0 +1,60 @@
+#catalog {
+    background-color: #ff5d3f;
+}
+
+#catalog > div {
+    padding: 20px 0;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+}
+
+#catalog-heading {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #ff5d3f;
+    padding-bottom: 0 !important;
+}
+
+#catalog-heading > hr {
+    color: white;
+}
+
+.card {
+    margin: 5px;
+    width: auto;
+    border: 1px solid white;
+    color: #777069;
+}
+
+.card-img-top {
+    padding: 10px;
+}
+
+.card-title {
+    color: black;
+}
+
+.item-description {
+    font-weight: 400;
+    color: black;
+}
+
+.item-description > .list-group-item{
+    padding: .5rem 0;
+}
+
+#price-list-div {
+    background-color: #777069;
+    text-decoration: none;
+}
+
+#price-list-div > a {
+    text-decoration: none;
+    color: white;
+}
+
+#price-list-div > a:hover {
+    text-decoration: none;
+    color: white;
+}

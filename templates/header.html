@@ -1,15 +1,17 @@
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
 
 <header style="margin-top: 10px">
     <nav class="nav nav-fill">
-        <a class="navbar-brand" href="#" id="logo">
+        <a class="navbar-brand" href="/" id="logo">
             <img src="{% static '/images/Logo.png' %}"
                  width="50" height="50" alt="Logo" loading="lazy">
             ПермКровля
         </a>
-        <a class="nav-link" href="/">Главная</a>
-        <a class="nav-link" href="/catalog">Товары</a>
-        <a class="nav-link" href="/about">О проекте</a>
+        <a class="nav-link" href="/#main">Главная</a>
+        <a class="nav-link" href="/#catalog">Товары</a>
+        <a class="nav-link" href="/#about">О нас</a>
+        <a class="nav-link" href="/#contacts">Контакты</a>
         <a class="nav-link nav-phone" href="tel:83422021412">
             <i class="bi bi-telephone-fill"></i>
             +7 (342) 202-14-12
