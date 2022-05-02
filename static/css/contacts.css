@@ -1,0 +1,27 @@
+#contacts {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+}
+
+#contacts-heading {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 0 !important;
+}
+
+.contacts-item {
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.contacts-icon  {
+    font-size: 30px;
+    color: #ff5d3f;
+}
+
+#map-div {
+    margin-top: 50px;
+}

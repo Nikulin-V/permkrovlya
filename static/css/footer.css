@@ -1,3 +1,7 @@
 footer {
     color: #777069;
 }
+
+footer > div > div > div > a {
+    width: 100%;
+}
