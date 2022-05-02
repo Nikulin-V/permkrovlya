@@ -1,0 +1,37 @@
+header {
+    color: #ff5d3f;
+}
+
+.navbar-brand {
+    color: #ff5d3f;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+    float: left;
+    margin-left: 30px;
+}
+
+.navbar-brand:hover {
+    color: #777069;
+    float: left;
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: #777069;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    margin-top: 15px;
+    padding: 0;
+}
+
+.nav-link:hover {
+    color: #ff5d3f;
+}
+
+.nav-phone {
+    color: #ff5d3f;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+    font-size: large;
+    float: right;
+}
