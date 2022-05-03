@@ -1,0 +1,16 @@
+#about > div {
+    padding: 15% 0;
+    font-family: 'Roboto Slab', serif;
+}
+
+#about-text {
+    padding: 5% 0;
+}
+
+#about-heading {
+    padding-bottom: 5%;
+}
+
+#about-description {
+    font-size: large;
+}
