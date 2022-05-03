@@ -44,17 +44,20 @@
     padding: .5rem 0;
 }
 
-#price-list-div {
+#price-list {
+    padding: 20px 0;
+    font-family: 'Roboto Slab', serif;
+    color: white;
     background-color: #777069;
     text-decoration: none;
 }
 
-#price-list-div > a {
+#price-list > a {
     text-decoration: none;
     color: white;
 }
 
-#price-list-div > a:hover {
+#price-list > a:hover {
     text-decoration: none;
     color: white;
 }
