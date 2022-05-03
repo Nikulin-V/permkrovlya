@@ -1,14 +1,15 @@
 #contacts {
     text-align: center;
     font-family: 'Roboto Slab', serif;
+    background-color: #A6D0D8;
 }
 
 #contacts-heading {
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: white;
-    padding: 10px 0;
+    padding-top: 15px;
+    background-color: #A6D0D8;
 }
 
 .contacts-item {
@@ -22,5 +23,5 @@
 }
 
 #map-div {
-    margin-top: 50px;
+    padding: 50px 0;
 }
