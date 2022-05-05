@@ -44,7 +44,7 @@
     padding: .5rem 0;
 }
 
-#price-list {
+#after-description {
     padding: 20px 0;
     font-family: 'Roboto Slab', serif;
     color: white;
@@ -52,12 +52,14 @@
     text-decoration: none;
 }
 
-#price-list > a {
-    text-decoration: none;
-    color: white;
+.btn-catalog {
+    font-family: 'Roboto Slab', serif;
+    font-size: xx-large;
+    margin: 20px 0;
+    white-space: nowrap;
 }
 
-#price-list > a:hover {
-    text-decoration: none;
-    color: white;
+.btn-catalog-icon {
+    font-size: 40px;
+    padding-right: 3px;
 }

@@ -1,0 +1,19 @@
+#partners {
+    padding-top: 15%;
+    font-family: 'Roboto Slab', serif;
+}
+
+#partners-heading {
+    padding-bottom: 20px;
+}
+
+.partners-img {
+    height: 100%;
+    width: auto;
+    object-fit: scale-down;
+    padding: 10px 0;
+}
+
+.partners-item {
+    align-self: center;
+}
