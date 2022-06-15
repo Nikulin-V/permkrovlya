@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.getenv('DEBUG', False) in ('1', 'True', 'true', 'T', 't')
 
-ALLOWED_HOSTS = ['127.0.0.1', '10.44.44.100']
+ALLOWED_HOSTS = ['127.0.0.1', '10.44.44.100', 'localhost', '*']
 
 INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
