@@ -1,3 +1,5 @@
+import os
+
 from django.http import FileResponse, HttpResponse
 from django.test import TestCase
 
@@ -7,6 +9,9 @@ client = Client()
 
 
 class TestHomepage(TestCase):
+    def setUp(self):
+        os.environ['DEBUG'] = 'False'
+        os.environ['SECRET_KEY'] = 'super_secret_test_key'
 
     def test_index_page(self):
         response = client.get('/')
@@ -28,9 +33,6 @@ class TestHomepage(TestCase):
             response.content, response_.content,
             'Page with path "/" and page with path "/index" are unequal'
         )
-
-
-class TestPriceList(TestCase):
 
     def test_pricelist_page(self):
         response = client.get('/price-list/')
