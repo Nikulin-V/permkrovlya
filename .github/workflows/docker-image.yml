@@ -23,5 +23,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker login -u ${{ secrets.GITLAB_USER }} -p ${{ secrets.GITLAB_USER }}
-        docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${{ GITHUB_REF_NAME }}
+        docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
         docker push ${{ secrets.GITLAB_REGISTRY }}
