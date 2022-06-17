@@ -9,9 +9,6 @@ client = Client()
 
 
 class TestHomepage(TestCase):
-    def setUp(self):
-        os.environ['DEBUG'] = 'False'
-        os.environ['SECRET_KEY'] = 'super_secret_test_key'
 
     def test_index_page(self):
         response = client.get('/')
