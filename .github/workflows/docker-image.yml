@@ -1,0 +1,41 @@
+name: Docker Image CI/CD
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  test:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run Django tests
+      run: |
+        pip install -r requirements.txt
+        python3 manage.py test
+      
+  build:
+    needs: test
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }}
+        docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
+        docker push ${{ secrets.GITLAB_REGISTRY }}
+  
+  deploy:
+    needs: [test, build]
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v1
+    - name: Deploy to permkrovlya.ru
+      run: |
+        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }}
+        docker pull ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
+        docker rm -f permkrovlya || true
+        docker run -d -p 81:81 -n permkrovlya ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
