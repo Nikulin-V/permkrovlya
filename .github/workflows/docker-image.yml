@@ -13,26 +13,28 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run Django tests
-      run:  python manage.py test
+      run:  python3 manage.py test
       
       
   build:
+    needs: test
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker login -u ${{ secrets.GITLAB_USER }} -p ${{ secrets.GITLAB_USER }}
-        docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
+        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }}
+        docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
         docker push ${{ secrets.GITLAB_REGISTRY }}
   
   deploy:
+    needs: [test, build]
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
-    - name: Deploy ro permkrovlya.ru
+    - name: Deploy to permkrovlya.ru
       run: |
-        docker login -u ${{ secrets.GITLAB_USER }} -p ${{ secrets.GITLAB_USER }}
-        docker pull ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
+        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }}
+        docker pull ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
         docker rm -f permkrovlya || true
-        docker run -d -p 81:81 -n permkrovlya ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
+        docker run -d -p 81:81 -n permkrovlya ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
