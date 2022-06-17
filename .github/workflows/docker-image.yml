@@ -36,7 +36,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Deploy to permkrovlya.ru
       run: |
-        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }}
+        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }} ${{ secrets.GITLAB_URL }}
         docker pull ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
         docker rm -f permkrovlya || true
         docker run -d -p 81:81 -n permkrovlya ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
