@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI/CD
 
 on:
   push:
@@ -9,15 +9,15 @@ on:
 jobs:
 
   test:
-    runs-on: python:3-alpine
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
     - name: Run Django tests
-      run:  python manage.py
+      run:  python manage.py test
       
       
   build:
-    runs-on: docker:stable
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
@@ -25,3 +25,14 @@ jobs:
         docker login -u ${{ secrets.GITLAB_USER }} -p ${{ secrets.GITLAB_USER }}
         docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
         docker push ${{ secrets.GITLAB_REGISTRY }}
+  
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v1
+    - name: Deploy ro permkrovlya.ru
+      run: |
+        docker login -u ${{ secrets.GITLAB_USER }} -p ${{ secrets.GITLAB_USER }}
+        docker pull ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
+        docker rm -f permkrovlya || true
+        docker run -d -p 81:81 -n permkrovlya ${{ secrets.GITLAB_REGISTRY }}:${ GITHUB_REF_NAME }
