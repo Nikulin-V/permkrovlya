@@ -39,4 +39,4 @@ jobs:
         docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }} ${{ secrets.GITLAB_URL }}
         docker pull ${{ secrets.GITLAB_IMAGE }}:${{ github.ref_name }}
         docker rm -f permkrovlya || true
-        docker run -d -p 81:81 --name permkrovlya ${{ secrets.GITLAB_IMAGE }}:${{ github.ref_name }} --env "DEBUG=False" --env "SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}"
+        docker run -d -p 81:81 --name permkrovlya ${{ secrets.GITLAB_IMAGE }}:${{ github.ref_name }} --env DEBUG=False --env SECRET_KEY='${{ secrets.DJANGO_SECRET_KEY }}'
