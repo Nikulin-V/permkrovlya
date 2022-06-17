@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }}
+        docker login -u gitlab-ci-token -p ${{ secrets.GITLAB_TOKEN }} ${{ secrets.GITLAB_URL }}
         docker build . --file Dockerfile --tag ${{ secrets.GITLAB_REGISTRY }}:${{ github.ref_name }}
         docker push ${{ secrets.GITLAB_REGISTRY }}
   
