@@ -9,4 +9,4 @@ COPY . /app
 
 EXPOSE 81
 
-CMD python manage.py runserver 0.0.0.0:81
+CMD python manage.py runserver 0.0.0.0:81 --insecure
